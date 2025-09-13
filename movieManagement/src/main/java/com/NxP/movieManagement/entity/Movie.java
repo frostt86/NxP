@@ -1,37 +1,75 @@
-package main.java.com.nxp.movieManagement.entity;
+package com.nxp.movieManagement.entity;
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
 
 @Entity
+@Table(name = "movies")
 public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long movieId;
+    private Long id;
 
+    @Column(nullable = false)
     private String title;
+
+    @Column(nullable = false)
     private String genre;
-    private LocalDate releaseDate;
-    private int duration;
-    private String description;
 
-    // Getters and setters
-    public Long getMovieId() { return movieId; }
-    public void setMovieId(Long movieId) { this.movieId = movieId; }
+    @Column(nullable = false)
+    private String language;
 
-    public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
+    @Column(nullable = false)
+    private int duration; // in minutes
 
-    public String getGenre() { return genre; }
-    public void setGenre(String genre) { this.genre = genre; }
+    // Constructors
+    public Movie() {}
 
-    public LocalDate getReleaseDate() { return releaseDate; }
-    public void setReleaseDate(LocalDate releaseDate) { this.releaseDate = releaseDate; }
+    public Movie(String title, String genre, String language, int duration) {
+        this.title = title;
+        this.genre = genre;
+        this.language = language;
+        this.duration = duration;
+    }
 
-    public int getDuration() { return duration; }
-    public void setDuration(int duration) { this.duration = duration; }
+    // Getters & Setters
+    public Long getId() {
+        return id;
+    }
 
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
 }

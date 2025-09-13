@@ -1,10 +1,11 @@
 import com.NxP.moviemanagement.domain.*;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
-public interface MoviesRepo extends MongoRepository<Movie, String> {
+public interface MoviesRepo extends JpaRepository<Movie, Long> 
+ {
     Optional<Movie> findByTitle(String title);
 }
 

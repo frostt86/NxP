@@ -1,29 +1,64 @@
 package com.nxp.movieManagement.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
-
-import java.time.LocalDateTime;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Table(name = "bookings")
 public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long bookingId;
+    private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @ManyToOne
-    @JoinColumn(name = "movie_id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "movie_id", referencedColumnName = "id")
     private Movie movie;
 
-    private LocalDateTime showTime;
+    @Column(nullable = false)
+    private String customerName;
+
+    @Column(nullable = false)
     private int seats;
+
+    // Constructors
+    public Booking() {}
+
+    public Booking(Movie movie, String customerName, int seats) {
+        this.movie = movie;
+        this.customerName = customerName;
+        this.seats = seats;
+    }
+
+    // Getters & Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public int getSeats() {
+        return seats;
+    }
+
+    public void setSeats(int seats) {
+        this.seats = seats;
+    }
 }
