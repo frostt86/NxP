@@ -1,4 +1,4 @@
-package com.NxP.movieManagement;
+package com.nxp.movieManagement;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
